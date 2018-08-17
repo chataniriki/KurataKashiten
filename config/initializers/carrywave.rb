@@ -3,7 +3,7 @@ CarrierWave.configure do |config|
   config.fog_provider = 'fog/aws' # required
   config.fog_credentials = {
     provider: 'AWS',
-    aws_access_key_id: 'KIAIILL4XN5KLL5QXTQ',
+    <%= ENV['ACCESS_KEY'] %>
     <%= ENV['API_KEY'] %>
     region: 'ap-northeast-1',
     host:                  's3.amazonaws.com/geek-rails-photo-sampler',             # optional, defaults to nil
