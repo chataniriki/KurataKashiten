@@ -4,7 +4,7 @@ CarrierWave.configure do |config|
   config.fog_credentials = {
     provider: 'AWS',
     aws_access_key_id: 'KIAIILL4XN5KLL5QXTQ',
-    aws_secret_access_key: 'Or2SW2zvqG98TdfzTEFz3Th0zVsefB1O6ubPQEA9',
+    <%= ENV['aws_secret_access_key: 'Or2SW2zvqG98TdfzTEFz3Th0zVsefB1O6ubPQEA9','] %>
     region: 'ap-northeast-1',
     host:                  's3.amazonaws.com/geek-rails-photo-sampler',             # optional, defaults to nil
     endpoint:              'https://s3.ap-northeast-1.amazonaws.com' # optional, defaults to nil

@@ -72,3 +72,6 @@ gem 'fog-aws'
 
 # google map
 gem 'geocoder'
+# github
+
+gem 'dotenv-rails'
