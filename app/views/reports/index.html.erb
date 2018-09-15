@@ -1,40 +1,52 @@
-<p id="notice"><%= notice %></p>
+<input type="checkbox" id="cp_navimenuid">
+<label class="menu" for="cp_navimenuid">
+<div class="menubar">
+<span class="bar"></span>
+<span class="bar"></span>
+<span class="bar"></span>
+</div>
 
-<h1>Reports</h1>
+  <ul>
+  <li><a id="home" href="/welcome/index">Home</a></li>
+  <li><a id="home" href="/welcome/company">倉田菓子舗について</a></li>
+  <li><a id="home" href="/products/index">商品一覧</a></li>
+  <li><a id="contact" href="/reports">News</a></li>
+  <% if user_signed_in?%>
+  <li><%= link_to "ログアウト", destroy_user_session_path, :method => :delete %></li>
+  <% end %>
+  </ul>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Image</th>
-      <th>Explanation</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+</label>
+<% @reports.each do |report| %>
+    <div class="report-field">
+      <div class="report-picture">
+        <a href="/reports/<%= report.id %>">  <%= image_tag report.image.to_s, :width => "100%" %> </a>
+        <div class="picture-contents">
+          <%= report.created_at.strftime("%Y年%m月%d日") %>
+          <h1 class="report-title"><%= report.title %></h1>
+          <% if user_signed_in? %>
+            <tr>
+              <td><%= link_to 'Show', report %></td>
+              <td><%= link_to 'Edit', edit_report_path(report) %></td>
+              <td><%= link_to 'Destroy', report, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>
+          <% end %>
+        </div>
+      </div>
+    </div>
+<% end %>
 
-  <tbody>
-    <% @reports.each do |report| %>
-      <tr>
-        <td><%= report.title %></td>
-        <td><%= report.image %></td>
-        <td><%= report.explanation %></td>
-        <td><%= link_to 'Show', report %></td>
-        <td><%= link_to 'Edit', edit_report_path(report) %></td>
-        <td><%= link_to 'Destroy', report, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-<br>
 
-<%= link_to 'New Report', new_report_path %>
+<% if user_signed_in? %>
+ <%= link_to 'New Report', new_report_path %>
+<% end %>
 
 <div class="footer">
-　<h1>倉田菓子店情報</h1>
-<div class="footer-address">
-   <p1>〒386-0012 上田市中央4-6-18</p1>
-   <br>
-   <p2>TEL 0268-22-1769</p2>
-</div>
+ <h1>倉田菓子舗</h1>
+  <div class="footer-address">
+    <p1>〒386-0012 上田市中央4-6-18</p1>
+    <br>
+    <p2>TEL 0268-22-1769</p2>
+ </div>
 </div>

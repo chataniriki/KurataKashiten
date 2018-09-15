@@ -1,44 +1,95 @@
-<p id="notice"><%= notice %></p>
-<br><br><br><br>
-<div class="container">
+<br>
+<div class="container-top">
   <div class="row">
-    <div class="col-sm-2">
+      <div class="col-sm-1">
 
+      </div>
+      <div class="col-sm-3">
+        <div class="product-picture-top">
+          <a id="home" href="/welcome/index">
+          <%= image_tag src="/assets/title.png" ,:width => "120px",:height => "50px",:left =>"100px"%>
+        </a>
+        </div>
+      </div>
+      <div class="col-sm-8">
+        <div class="product-wrapper">
+          <ul>
+          <li><a id="home" href="/welcome/index">Home</a></li>
+          <li><a id="home" href="/welcome/company">倉田菓子舗について</a></li>
+          <li><u><a id="home" href="/products/index">商品一覧</a></u></li>
+          <li><a id="contact" href="/reports">News</a></li>
+          <% if user_signed_in?%>
+          <li><%= link_to "ログアウト", destroy_user_session_path, :method => :delete %></li>
+          <% end %>
+          </ul>
+        </div>
+      </div>
     </div>
-    <div class="col-sm-6">
-
-        <p>
-          <%= image_tag @product.image.to_s, :width => "100%" %>
-
-        </p>
+  </div>
 
 
-        <%= link_to 'Edit', edit_product_path(@product) %> |
-        <%= link_to 'Back', products_path %>
+
+<input type="checkbox" id="cp_navimenuid">
+<label class="menu" for="cp_navimenuid">
+<div class="menubar">
+<span class="bar"></span>
+<span class="bar"></span>
+<span class="bar"></span>
+</div>
+
+  <ul>
+  <li><a id="home" href="/welcome/index">Home</a></li>
+  <li><a id="home" href="/welcome/company">倉田菓子舗について</a></li>
+  <li><a id="home" href="/products/index">商品一覧</a></li>
+  <li><a id="contact" href="/reports">News</a></li>
+  <% if user_signed_in?%>
+  <li><%= link_to "ログアウト", destroy_user_session_path, :method => :delete %></li>
+  <% end %>
+  </ul>
+
+</label>
+<br><br><br><br>
+
+
+<div class="container">
+    <div class="row">
+       <div class="col-sm-2">
+       </div>
+       <div class="col-sm-6">
+            <p><%= image_tag @product.image.to_s, :width => "100%" %></p>
+            <% if user_signed_in? %>
+            <%= link_to 'Edit', edit_product_path(@product) %>
+            <%= link_to 'Back', products_path %>
+            <% end %>
       </div>
       <div class="col-sm-3">
         <p>
           <strong>商品名：</strong>
           <%= @product.name %>
-
-        <p>
-          <strong>価格：</strong>
-          <%= @product.price %>
         </p>
-
+       <p>
+          <strong>価格： ￥</strong>
+          <%= @product.price %>（税抜き）
+        </p>
         <p>
           <strong>商品説明：</strong>
           <%= @product.explanation %>
         </p>
-
         <p>
           <strong>ジャンル：</strong>
           <%= @product.genre %>
         </p>
-
       </div>
       <div class="col-sm-1">
-
       </div>
     </div>
+</div>
+
+<div class="footer">
+ <h1>倉田菓子舗</h1>
+  <div class="footer-address">
+     <p1>〒386-0012 上田市中央4-6-18</p1>
+     <br>
+     <p2>TEL 0268-22-1769</p2>
+  </div>
 </div>

@@ -1,5 +1,6 @@
 class WelcomeController < ApplicationController
   def index
+    @reports=Report.all
   end
 
   def access
@@ -8,6 +9,6 @@ class WelcomeController < ApplicationController
   def ask
   end
 
-  def company 
+  def company
   end
 end

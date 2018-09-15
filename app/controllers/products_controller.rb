@@ -1,10 +1,19 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, only: [:new, :edit, :create, :destroy]
   # GET /products
   # GET /products.json
   def index
     @products = Product.all
+
+    if params[:search] == nil
+      @search = Product.all
+    elsif params[:search] == ""
+      @search = Product.all
+    else
+      #部分検索
+      @search = Product.where("name LIKE ? ",'%' + params[:search] + '%')
+    end
   end
 
   # GET /products/1
@@ -71,4 +80,5 @@ class ProductsController < ApplicationController
     def product_params
       params.require(:product).permit(:name, :price, :explanation, :image, :genre)
     end
+
 end

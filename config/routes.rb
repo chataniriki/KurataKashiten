@@ -11,6 +11,10 @@ Rails.application.routes.draw do
   get 'products/index'
   get 'information/index'
   get 'reports/index'
+  get 'maps/3'
+  get 'users/sign_in'
+  get 'products/index'
+  post 'products/index'
   resources :information
   resources :products
 

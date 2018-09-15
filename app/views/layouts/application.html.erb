@@ -6,35 +6,16 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>
 
-  <!-- 1.ナビゲーションバーの設定 -->
-  <nav>
-   <div class="header-container">
-       <!-- 2.ヘッダ情報 -->
-       <div class="navbar-header">
-         <a href="/welcome/index">
-           <div class="header-image">
-             <%= image_tag src="/assets/title.png" ,:width => "120px"%>
-           </div>
-         </a>
-       </div>
-       <!-- 3.リストの配置 -->
-       <div class="header-list">
-        <ul>
-         <li><%= link_to "アクセス", welcome_access_path %></li>
-         <li><%= link_to "News", reports_path %></li>
-         <li><%= link_to "お問い合わせ", welcome_ask_path %></li>
-         <li><%= link_to "商品一覧", products_index_path %></li>
-         <li><%= link_to "会社情報", welcome_company_path %></li>
-        </ul>
-       </div>
+  
 
-   </div>
-  </nav>
 
 
     <%= yield %>

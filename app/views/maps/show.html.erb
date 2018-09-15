@@ -1,5 +1,7 @@
-
-
+<!-- 追加箇所開始 -->
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%=ENV['GOOGLE_MAP_KEY']%>&callback=initMap">
+</script>
 <script type="text/javascript">
     function initMap() {
 
@@ -27,9 +29,8 @@
         });
     }
 </script>
-<script async defer
-        src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=ENV['AWS_KEY']&callback=initMap">
-</script>
+
+<!-- 追加箇所終了 -->
 
 
 
@@ -50,14 +51,16 @@
   <%= @map.longitude %>
 </p>
 
+<!-- 追加箇所開始 -->
 <style type="text/css">
-  #map { height: 400px;
+  #map { height: 200px;
     margin-left:auto;
     margin-right:auto;
     text-align:left;
     width: 80%;}
 </style>
 <div id="map"></div>
+<!-- 追加箇所終了 -->
 
 <%= link_to 'Edit', edit_map_path(@map) %> |
 <%= link_to 'Back', maps_path %>

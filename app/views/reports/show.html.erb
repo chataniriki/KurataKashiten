@@ -1,19 +1,63 @@
-<p id="notice"><%= notice %></p>
+<input type="checkbox" id="cp_navimenuid">
+<label class="menu" for="cp_navimenuid">
+<div class="menubar">
+<span class="bar"></span>
+<span class="bar"></span>
+<span class="bar"></span>
+</div>
 
-<p>
-  <strong>Title:</strong>
-  <%= @report.title %>
-</p>
+  <ul>
+  <li><a id="home" href="/welcome/index">Home</a></li>
+  <li><a id="home" href="/welcome/company">倉田菓子舗について</a></li>
+  <li><a id="home" href="/products/index">商品一覧</a></li>
+  <li><a id="contact" href="/reports">News</a></li>
+  <% if user_signed_in?%>
+  <li><%= link_to "ログアウト", destroy_user_session_path, :method => :delete %></li>
+  <% end %>
+  </ul>
 
-<p>
-  <strong>Image:</strong>
-  <%= @report.image %>
-</p>
+</label>
+<img src="/assets/sign.png" alt="看板" width="100%" height="300px">
+<div class="report-show-body">
+  <div class="container-middle">
+    <div class="row">
+      <div class="col-sm-7">
+        <div class="report-show-title">
+          <br><br><br><br><br>
+          <h1><strong></strong><%= @report.title %></h1><br>
+          <div id="date"></div>
 
-<p>
-  <strong>Explanation:</strong>
-  <%= @report.explanation %>
-</p>
+        </div>
+        <div class="report-show-explanation">
+          <p><strong></strong><%= @report.explanation %></p>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="show-body">
+            <div class="report-show-picture">
+              <br><br><br><br><br><br>
+              <%= image_tag @report.image.to_s, :width => "100%" %>
+            </div>
+        </div>
+      </div>
+      <div class="col-sm-1">
+      </div>
+    </div>
+  </div>
 
-<%= link_to 'Edit', edit_report_path(@report) %> |
-<%= link_to 'Back', reports_path %>
+
+        <% if user_signed_in? %>
+          <%= link_to 'Edit', edit_report_path(@report) %> |
+          <%= link_to 'Back', reports_path %>
+        <% end %>
+        <br><br><br><br><br>
+</div>
+<!-- フッター -->
+<div class="footer">
+ <h1>倉田菓子舗</h1>
+   <div class="footer-address">
+    <p1>〒386-0012 長野県上田市中央4-6-18</p1>
+     <br>
+     <p2>TEL 0268-22-1769</p2>
+   </div>
+</div>

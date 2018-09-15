@@ -1,40 +1,137 @@
-<p id="notice"><%= notice %></p>
-<br><br><br>
-<br><br><br>
-<%= link_to 'New Product', new_product_path %>
 
-
-
-<div class="container">
+<br>
+<div class="container-top">
   <div class="row">
-    <% @products.each do |product| %>
-      <div class="col-lg-4 col-md-6 col-xs-12">
-        <div class="card">
-          <div class="card-header">
-          <a href="/products/<%= product.id %>">  <%= image_tag product.image.to_s, :width => "100%" %></a>
-          </div>
-          <div class="card-body">
-            <%= product.name %><br>
-            <%= product.price %><br>
-            <%= product.explanation %><br>
-            <%= product.genre %><br>
-            <tr>
-              <td><%= link_to 'Show', product %></td>
-              <td><%= link_to 'Edit', edit_product_path(product) %></td>
-              <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-            </tr>
-          </div>
+      <div class="col-sm-1">
+      </div>
+      <div class="col-sm-3">
+        <div class="product-picture-top">
+          <a id="home" href="/welcome/index">
+          <%= image_tag src="/assets/title.png" ,:width => "120px",:height => "50px",:left =>"100px"%>
+        </a>
         </div>
       </div>
-    <% end %>
+      <div class="col-sm-8">
+        <div class="product-wrapper">
+          <ul>
+          <li><a id="home" href="/welcome/index">Home</a></li>
+          <li><a id="home" href="/welcome/company">倉田菓子舗について</a></li>
+          <li><u><a id="home" href="/products/index">商品一覧</a></u></li>
+          <li><a id="contact" href="/reports">News</a></li>
+          <% if user_signed_in?%>
+          <li><%= link_to "ログアウト", destroy_user_session_path, :method => :delete %></li>
+          <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
+
+
+
+  <br><br><br><br>
+
+  <% if user_signed_in? %>
+    <%= link_to 'New Product', new_product_path %>
+  <% end %>
+<div class="product-top">
+  <h1>
+    商品一覧
+  </h1>
+  <p1>
+    当店の商品は”おこびれ”（おやつ）としても腹持ちも良く、
+      消化が良く、気取らない素朴さが<br>小説家 福永武彦先生もお好きだったようです。<br>
+      おやきの他、世界でただ一軒のさんしょ団子、他七種類。<br>
+      北御牧八重原の粘土地で収穫した餅米を使用し、<br>
+      木根でつくぼた餅、切り餅と（発送可）人気商品の一例をあげさせて頂きました。<br><br>
+
+  </p1>
 </div>
 
-<div class="footer">
-　<h1>倉田菓子店情報</h1>
-<div class="footer-address">
-   <p1>〒386-0012 上田市中央4-6-18</p1>
-   <br>
-   <p2>TEL 0268-22-1769</p2>
+   <%= form_tag(controller:"products",action:"index") do %>
+     <%= text_field_tag :search %>
+     <%= submit_tag 'Search',:name => nil %>
+   <% end %>
+
+  <% @search.each do |product| %>
+  <div class="card">
+    <div class="card-header">
+      <a href="/products/<%= product.id %>">  <%= image_tag product.image.to_s, :width => "30%" %></a>
+    </div>
+    <div class="card-body">
+      <div class="product-genre">
+          <strong></strong>
+          <%= product.genre %><br>
+      </div>
+      <div class="product-name">
+          <strong></strong>
+          <%= product.name %><br>
+      </div>
+      <div class="product-price">
+          <strong>1個：￥</strong>
+          <%= product.price %>
+          <strong>（税抜）</strong>
+      </div>
+
+        <% if user_signed_in? %>
+          <tr>
+            <td><%= link_to 'Show', product %></td>
+            <td><%= link_to 'Edit', edit_product_path(product) %></td>
+            <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+    </div>
+  </div>
+  <% end %><br><br>
+
+  <!-- 残し -->
+  <div class="container">
+    <div class="row">
+      <% @products.each do |product| %>
+        <div class="col-lg-4 col-md-6 col-xs-12">
+          <div class="card">
+            <div class="card-header">
+              <a href="/products/<%= product.id %>">  <%= image_tag product.image.to_s, :width => "100%" %></a>
+            </div>
+            <div class="card-body">
+              <div class="product-genre">
+                  <strong></strong>
+                  <%= product.genre %><br>
+              </div>
+              <div class="product-name">
+                  <strong></strong>
+                  <%= product.name %><br>
+              </div>
+              <div class="product-price">
+                  <strong>1個：￥</strong>
+                  <%= product.price %>
+                  <strong>（税抜）</strong>
+              </div>
+
+                <% if user_signed_in? %>
+                  <tr>
+                    <td><%= link_to 'Show', product %></td>
+                    <td><%= link_to 'Edit', edit_product_path(product) %></td>
+                    <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                  </tr>
+                <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+
+     <div class="attention">
+       <p1>※ひとつひとつ手作りの為、全商品が揃うのは11:00頃になります</p1>
+     </div><br>
 </div>
+<div class="footer">
+   <h1>倉田菓子舗</h1>
+      <div class="footer-address">
+         <p1>〒386-0012 上田市中央4-6-18</p1>
+            <br>
+         <p2>TEL 0268-22-1769</p2>
+      </div>
 </div>

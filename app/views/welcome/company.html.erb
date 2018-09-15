@@ -1,31 +1,203 @@
-<h1>Welcome#company</h1>
-<p>Find me in app/views/welcome/company.html.erb</p>
-<br><br>
+<input type="checkbox" id="cp_navimenuid">
+<label class="menu" for="cp_navimenuid">
+<div class="menubar">
+<span class="bar"></span>
+<span class="bar"></span>
+<span class="bar"></span>
+</div>
 
-<div class="body">
-   <span class="under">会社情報</span>
-   <br>
-   <p1>
-     当店では昭和10年より手造りをモットーとし、おやきの素朴さを大切にし小麦粉、米粉、梅酒を配合し真心込めてお作り致し自信を持って販売致して居ります。
-   </p>
-   <p2>
-     昔は一食は粉物で代用していた祖末な食生活文化から今はいつでも食べられる、栄養あるおやきが主食としても喜ばれ又、”おこびれ”（おやつ）としても腹持ちも良く、
-     消化が良く、気取らない素朴さが小説家　福永武彦先生もお好きだったようです。
-   </p2>
-   <p3>
-     おやきの他、世界でただ一軒のさんしょ団子、他七種類、水上勉さんの住んでおられます
-     北御牧八重原の粘土地で収穫した餅米を使用し、木根でつくぼた餅、切り餅と（発送可）人気商品の一例をあげさせて頂きました。
-   </p3>
-   <p4>
-     信州の美味しい自然を眺めにぜひおいでくださいませ。
-   </p4>
+  <ul>
+  <li><a id="home" href="/welcome/index">Home</a></li>
+  <li><a id="home" href="/welcome/company">倉田菓子舗について</a></li>
+  <li><a id="home" href="/products/index">商品一覧</a></li>
+  <li><a id="contact" href="/reports">News</a></li>
+  <% if user_signed_in?%>
+  <li><%= link_to "ログアウト", destroy_user_session_path, :method => :delete %></li>
+  <% end %>
+  </ul>
 
+</label>
+
+<div class="top-wrapper">
+    <div class="campany-top-picture">
+      <img src="/assets/main.png" alt="メイン" width="100%" height="600px">
+                <div class="top-sentence-a">
+                  <h1>店舗概要</h1>
+                  <p1> 　　　創業八十年の老舗店</p1>
+                </div>
+    </div>
+</div>
+<div class="company-body">
+    <div id="map"></div>
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>住所</th>
+          <td>〒386-0012 長野県上田市中央4-6-18
+          </td>
+        </tr>
+        <tr>
+          <th>電話番号</th>
+          <td>0268-22-1769</td>
+       </tr>
+       <tr>
+          <th>営業時間</th>
+          <td>9時30分〜16時30分</td>
+       </tr>
+       <tr>
+          <th>定休日</th>
+          <td>毎月6・16・26日　　
+            <div class="comment">
+            *その他私用により休む事もございますのでお越しの際はお問い合わせください。
+          </div></td>
+       </tr>
+       <tr>
+          <th>駐車場</th>
+          <td>あり（3台）</td>
+       </tr>
+       <tr>
+           <th>席数</th>
+           <td>10席</td>
+       </tr>
+       <tr>
+           <th>交通アクセス</th>
+           <td>上田菅平ICをおり、上田駅を目指す。駅前通り(R141)から7つ目の信号を左折し左手に見えてくる。</td>
+       </tr>
+       <tr>
+           <th>最寄駅</th>
+           <td>上田駅</td>
+       </tr>
+       <tr>
+         <th></th>
+         <td>
+       </tr>
+      </tbody>
+    </table><br><br><br>
+    <style type="text/css">
+      #map {
+        height: 200px;
+        margin-left:auto;
+        margin-right:auto;
+        text-align:left;
+        width: 100%;
+        transition-duration: 0.3s;
+        overflow: hidden;
+      }
+      #map :hover {
+      	transform: scale(1.1);	/*画像の拡大率*/
+      	transition-duration: 0.3s;	/*変化に掛かる時間*/
+      }
+    </style>
+
+    <!-- Google map -->
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=<%=ENV['GOOGLE_MAP_KEY']%>&callback=initMap">
+    </script>
+    <script type="text/javascript">
+        function initMap() {
+
+            var test = {lat: 36.4049973, lng: 138.2516773};
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 15,
+                center: test
+            });
+            var transitLayer = new google.maps.TransitLayer();
+            transitLayer.setMap(map);
+
+            var contentString = '住所：長野県上田市中央4-6-18';
+            var infowindow = new google.maps.InfoWindow({
+                content: contentString
+            });
+
+            var marker = new google.maps.Marker({
+                position:test,
+                map: map,
+                title: contentString
+            });
+
+            marker.addListener('click', function() {
+                infowindow.open(map, marker);
+            });
+        }
+    </script>
+<div class="company-contents">
+    <div class="company-container-top">
+
+             <div class="container-top">
+               <div class="row">
+                   <div class="col-sm-5">
+                      <div class="company-picture-top">
+                        <%= image_tag src="/assets/main.png" ,:width => "100%",:height => "250px"%>
+                      </div>
+                   </div>
+
+                   <div class="col-sm-6"><br>
+                     <div class="small-exp1">
+                       <p2><b>元祖　おやき処とは？</b></p2>
+                     </div><br>
+                     <p3>
+                        　 当店では昭和10年より創業を開始し、商品としておやきを初めて販売したため元祖おやき処として営業しております。</br>
+                         手造りをモットーとし、おやきの素朴さを大切にし小麦粉、米粉、梅酒を配合し真心込めてお作り致し自信を持って販売致して居ります。
+                     </p3>
+                   </div>
+              </div>
+             </div>
+    </div>
+
+                    <div class="col-sm-1">
+                    </div><br>
+
+
+            <div class="container-middle">
+              <div class="row">
+                <div class="col-sm-1">
+                </div>
+                <div class="col-sm-6"><br>
+                  <div class="small-exp2">
+                    <p2><b>おやきとは？</b></p2>
+                  </div><br>
+                     <p4>
+                     　「おやき」とは信州の郷土料理の一つで、小麦粉や蕎麦粉で作られた皮に野菜など様々な具材を包んだものを焼く、揚げる、蒸すといった調理方法で
+                      作られた食べ物。<br>山に囲まれた長野県は寒冷地で冬季は食材の確保が難しかった事から、米の代用食として各家庭で好まれて食べられました。<br><br>
+
+                    </p4>
+                </div>
+                 <div class="col-sm-5">
+                    <div class="company-picture-middle"><br>
+                       <%= image_tag src="/assets/oyaki-3.png" ,:width => "100%",:height => "250px"%>
+                    </div>
+                 </div><br>
+              </div>
+            </div><br>
+
+
+            <div class="container-bottom">
+              <div class="row">
+                  <div class="col-sm-5">
+                     <div class="company-picture-bottom">
+                       <%= image_tag src="/assets/shop1.png" ,:width => "100%",:height => "250px"%>
+                     </div>
+                  </div>
+
+                  <div class="col-sm-6"><br>
+                    <p3>
+                      そのため家庭によって味も異なり、味の特徴は地域によって様々です。昔は一食は粉物で代用していた祖末な食生活文化から今はいつでも食べられる,
+                        栄養あるおやきが主食としても喜ばれました。
+                    </p3>
+                  </div>
+             </div>
+            </div>
+                   <div class="col-sm-1">
+                   </div><br>
+
+
+
+    </div>
 
 <div class="footer">
-　<h1>倉田菓子店情報</h1>
+ <h1>倉田菓子舗</h1>
   <div class="footer-address">
-   <p1>〒386-0012 上田市中央4-6-18</p1>
-   <br>
-   <p2>TEL 0268-22-1769</p2>
-</div>
+     <p1>〒386-0012 上田市中央4-6-18</p1><br>
+     <p2>TEL 0268-22-1769</p2>
+  </div>
 </div>

@@ -1,24 +1,147 @@
 
 @import "bootstrap";
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700);
+@import url(http://fonts.googleapis.com/earlyaccess/notosansjp.css);
 
+
+.pictures{
+  position: relative;
+}
+body{
+  font-family: “HGP行書体”, “ＭＳ Ｐ明朝”, “MS PMincho”, serif;
+  line-height: 2;
+}
+.top-sentence{
+  position: absolute;
+  color: white;
+  z-index: 20;
+  right: 10%;
+  bottom:40%;
+  -webkit-writing-mode: vertical-rl;
+     -ms-writing-mode: tb-rl;
+         writing-mode: vertical-rl;
+  font-family: “HGP行書体”, “ＭＳ Ｐ明朝”, “MS PMincho”, serif;
+}
+
+*, *:before, *:after {
+-webkit-box-sizing: border-box;
+box-sizing: border-box;
+}
+// 外観
+.menu {
+right: 0;
+top: 0;
+position: fixed;
+z-index: 30;
+display: block;
+overflow: hidden;
+width: 60px;
+height: 60px;
+margin: 30px auto;
+cursor: pointer;
+-webkit-transition: all 0.5s ease-in-out;
+transition: all 0.5s ease-in-out;
+border: 3px solid transparent;
+}
+.menu div.menubar {
+width: 30px;
+margin: 17px auto;
+}
+// ハンバーガーの色
+.menu div.menubar .bar {
+display: block;
+width: 100%;
+height: 5px;
+margin-top: 3px;
+border-radius: 2px;
+background-color: white;
+}
+.menu ul {
+display: none;
+margin: 0;
+padding: 0;
+list-style-type: none;
+-webkit-transition: all 0.5s ease;
+transition: all 0.5s ease;
+text-align: center;
+opacity: 0;
+}
+.menu ul li {
+display: inline-block;
+padding-left:25px;
+padding-right:25px;
+}
+
+//
+.menu ul li a {
+display: inline-block;
+padding: 0.7em 0.5em;
+-webkit-transition: all 0.3s ease-in;
+transition: all 0.3s ease-in;
+text-decoration: none;
+color: white;
+border-bottom: 4px solid transparent;
+height: 56px;
+line-height: 2em;
+padding-right:25px;
+padding-left:25px;
+}
+// ホバーした後の文字の色
+.menu ul li a:hover {
+color: black;
+background-color: white;
+}
+.menu ul li a:target {
+border-bottom-color: #1b2538;
+}
+/* クリックした時の動き */
+#cp_navimenuid {
+display: none;
+}
+#cp_navimenuid:checked ~ .menu {
+width: 100%;
+height: 60px;
+border: 3px solid white;
+border-radius: 5px;
+background-color: transparent;
+}
+#cp_navimenuid:checked ~ .menu > ul {
+display: block;
+opacity: 1;
+}
+#cp_navimenuid:checked ~ .menu > .menubar {
+display: none;
+}
+
+// company
+.campany-top-picture{
+  position: relative;
+}
+.top-sentence-a{
+  display: block;
+  position: absolute;
+  top:50%;
+  left:45%;
+  color:white;
+  -webkit-writing-mode: vertical-rl;
+     -ms-writing-mode: tb-rl;
+         writing-mode: vertical-rl;
+  font-family: “HGP行書体”, “ＭＳ Ｐ明朝”, “MS PMincho”, serif;
+}
+.company-contents{
+  padding: 0px 5%;
+
+
+}
+.small-exp1{
+position:relative;
+left:20px;
+}
+
+//
 li{
   list-style:none;
   float:left;
-}
-
-.header-container{
-  z-index: 9999;
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  width:100%;
-  background-color: #594f4b;
-
-}
-.header-list li{
-  float: right;
-  font-size: 20px;
-  padding: 0px 20px;
 }
 .under{
   text-decoration: underline;
@@ -28,13 +151,156 @@ li{
 
 // footer-css
 .footer{
+
   height:150px;
   width:100%;
   background-color:#594f4b;
 }
 .footer h1{
   color:white;
+  font-size: 30px;
+  padding-top: 5px;
+
 }
 .footer-address{
   color:white;
+}
+
+// welcome-index news
+  .box28 {
+      position: relative;
+      margin: 2em 0;
+      padding: 25px 10px 7px;
+      border: solid 2px #ed7b11;
+  }
+  .box28 .box-title {
+      position: absolute;
+      display: inline-block;
+      top: -2px;
+      left: -2px;
+      padding: 0 9px;
+      height: 25px;
+      line-height: 25px;
+      vertical-align: middle;
+      font-size: 17px;
+      background: #ed7b11;
+      color: #ffffff;
+      font-weight: bold;
+  }
+  .box28 p {
+      margin-left: 10px;
+      margin-top:20px;
+      padding: 0;
+  }
+// company
+.company-body{
+
+  color:black;
+}
+// company-index h1
+  .small-exp{
+    border-top: solid 3px #FFC107;/*上線*/
+    border-bottom: solid 3px #FFC107;/*下線*/
+    margin-bottom:10px;
+  }
+  .small-exp p2{
+    font-size: 20px;
+  }
+.company-contents{
+  padding-top:0px;
+}
+  // product-index
+  .attention{
+    float: right;
+  }
+
+  .search-product{
+    text-align: center;
+  }
+// reports
+.report-picture {
+	overflow: hidden;	/*拡大時にはみ出た部分を隠す*/
+	width: 100%;	/*画像の幅*/
+	height: 250px;	/*画像の高さ*/
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 10;
+}
+.picture-contents{
+  position: absolute;
+  z-index: 20;
+  left:35%;
+  top:35%;
+  font-size: 10px;
+  color:white;
+}
+.report-picture a{
+	display: block;
+	transition-duration: 0.3s;	/*変化に掛かる時間*/
+}
+.report-picture a:hover {
+	transform: scale(1.1);	/*画像の拡大率*/
+	transition-duration: 0.3s;	/*変化に掛かる時間*/
+}
+.box29 {
+    background: #dcefff;
+    font-size: 1.2em;
+    background: black;
+    text-align: center;
+    color: #FFF;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+}
+.report-show-body{
+
+}
+.report-show-picture{
+  text-align: center;
+}
+.report-show-title h1{
+ text-align: center;
+ font-size: 35px;
+}
+.report-show-explanation{
+position: absolute;
+left:25%;
+right:25%;
+margin-bottom:30px;
+}
+
+.product-picture-top{
+
+}
+.product-wrapper{
+margin-left: 20px;
+padding: 20px 30px;
+}
+.product-wrapper a{
+margin-right: 40px;
+margin-left: 40px;
+color:black;
+
+}
+.card-seach{
+
+}
+
+.product-top h1{
+  font-size: 25px;
+}
+.product-top {
+  text-align: center;
+  font-size: 15px;
+}
+.product-genre{
+  text-align: center;
+  font-size: 15px;
+}
+.product-name{
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+.product-price{
+  text-align: center;
 }
