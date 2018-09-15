@@ -53,51 +53,56 @@
      <%= submit_tag 'Search',:name => nil %>
    <% end %>
 
-  <% @search.each do |product| %>
-  <!-- 残し -->
-  <div class="container">
-    <div class="row">
-      <% @products.each do |product| %>
-        <div class="col-lg-4 col-md-6 col-xs-12">
-          <div class="card">
-            <div class="card-header">
-              <a href="/products/<%= product.id %>">  <%= image_tag product.image.to_s, :width => "100%" %></a>
-            </div>
-            <div class="card-body">
-              <div class="product-genre">
-                  <strong></strong>
-                  <%= product.genre %><br>
-              </div>
-              <div class="product-name">
-                  <strong></strong>
-                  <%= product.name %><br>
-              </div>
-              <div class="product-price">
-                  <strong>1個：￥</strong>
-                  <%= product.price %>
-                  <strong>（税抜）</strong>
-              </div>
 
-                <% if user_signed_in? %>
-                  <tr>
-                    <td><%= link_to 'Show', product %></td>
-                    <td><%= link_to 'Edit', edit_product_path(product) %></td>
-                    <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                  </tr>
-                <% end %>
-            </div>
+    <div class="container">
+      <div class="row">
+        <% @search.each do |product| %>
+          <div class="col-lg-4 col-md-6 col-xs-12">
+            <ul>
+              <li>
+              <div class="card">
+                <div class="card-header">
+                  <a href="/products/<%= product.id %>">  <%= image_tag product.image.to_s, :width => "100%" %></a>
+                </div>
+                <div class="card-body">
+                  <div class="product-genre">
+                      <strong></strong>
+                      <%= product.genre %><br>
+                  </div>
+                  <div class="product-name">
+                      <strong></strong>
+                      <%= product.name %><br>
+                  </div>
+                  <div class="product-price">
+                      1個：￥<strong><%= product.price %></strong>（税抜）                   
+                  </div>
+
+
+
+                    <% if user_signed_in? %>
+                      <tr>
+                        <td><%= link_to 'Show', product %></td>
+                        <td><%= link_to 'Edit', edit_product_path(product) %></td>
+                        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                      </tr>
+                    <% end %>
+                </div>
+              </div>
+            </li>
+           </ul>
           </div>
+          <% end %><br>
         </div>
-      <% end %>
     </div>
-  </div>
-  <% end %><br><br>
+
+
+
 
 
      <div class="attention">
        <p1>※ひとつひとつ手作りの為、全商品が揃うのは11:00頃になります</p1>
      </div><br>
-</div>
+
 <div class="footer">
    <h1>倉田菓子舗</h1>
       <div class="footer-address">

@@ -214,9 +214,6 @@ li{
     float: right;
   }
 
-  .search-product{
-    text-align: center;
-  }
 // reports
 .report-picture {
 	overflow: hidden;	/*拡大時にはみ出た部分を隠す*/
@@ -300,4 +297,5 @@ color:black;
 }
 .product-price{
   text-align: center;
+  font-weight: bold;
 }
