@@ -2,16 +2,16 @@
 <br>
 <div class="container-top">
   <div class="row">
-      <div class="col-sm-1">
+      <div class="col-sm-1 col-md-1 col-xs-1">
       </div>
-      <div class="col-sm-3">
+      <div class="col-sm-3 col-md-4 col-xs-1">
         <div class="product-picture-top">
           <a id="home" href="/welcome/index">
           <%= image_tag src="/assets/title.png" ,:width => "120px",:height => "50px",:left =>"100px"%>
-        </a>
+         </a>
         </div>
       </div>
-      <div class="col-sm-8">
+      <div class="col-sm-8 col-md-7 col-xs-10">
         <div class="product-wrapper">
           <ul>
           <li><a id="home" href="/welcome/index">Home</a></li>
@@ -54,31 +54,39 @@
    <% end %>
 
 
-    <div class="container">
+    <div class="container" id="product">
       <div class="row">
-        <% @search.each do |product| %>
+       <% @search.each do |product| %>
           <div class="col-lg-4 col-md-6 col-xs-12">
-            <ul>
+            <ul><br>
               <li>
-              <div class="card">
-                <div class="card-header">
+              <div class="card1">
+                <div class="card-header1">
                   <a href="/products/<%= product.id %>">  <%= image_tag product.image.to_s, :width => "100%" %></a>
                 </div>
-                <div class="card-body">
+                <!-- click-show-detail -->
+                <div class="prduct-detail" id="product-detail">
+                  <p href="/products/<%= product.id %>">  <%= image_tag product.image.to_s, :width => "100%" %></p>
+                </div>
+                <div class="product-detail-mini">
+                      <p><strong><%= product.name %></strong>¥<%= product.price %>（税抜き）</p>
+                      <p><%= product.genre %></p>
+                      <p><%= product.explanation %></p>
+                    </div>
+                </div>
+              <!-- product-detail -->
+                <div class="card-body1">
                   <div class="product-genre">
                       <strong></strong>
-                      <%= product.genre %><br>
+                      <%= product.genre %>
                   </div>
                   <div class="product-name">
                       <strong></strong>
-                      <%= product.name %><br>
+                      <%= product.name %>
                   </div>
                   <div class="product-price">
-                      1個：￥<strong><%= product.price %></strong>（税抜）                   
+                      1個：￥<strong><%= product.price %></strong>（税抜）
                   </div>
-
-
-
                     <% if user_signed_in? %>
                       <tr>
                         <td><%= link_to 'Show', product %></td>
@@ -90,10 +98,10 @@
               </div>
             </li>
            </ul>
+           <% end %><br><br>
           </div>
-          <% end %><br>
         </div>
-    </div>
+
 
 
 
@@ -104,10 +112,15 @@
      </div><br>
 
 <div class="footer">
-   <h1>倉田菓子舗</h1>
+   <h1>　倉田菓子舗</h1>
       <div class="footer-address">
-         <p1>〒386-0012 上田市中央4-6-18</p1>
+         <p1>　〒386-0012 上田市中央4-6-18</p1>
             <br>
-         <p2>TEL 0268-22-1769</p2>
+         <p2>　TEL 0268-22-1769</p2>
       </div>
 </div>
+<script src="assets/javascripts/products.js"></script>
+
+<nonscrip>
+  <!-- 表示されない時 -->
+</nonscrip>

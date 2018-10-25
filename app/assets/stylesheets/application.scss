@@ -43,6 +43,7 @@ cursor: pointer;
 transition: all 0.5s ease-in-out;
 border: 3px solid transparent;
 }
+// ハンバーガーの大きさ
 .menu div.menubar {
 width: 30px;
 margin: 17px auto;
@@ -65,11 +66,12 @@ list-style-type: none;
 transition: all 0.5s ease;
 text-align: center;
 opacity: 0;
+
 }
 .menu ul li {
 display: inline-block;
-padding-left:25px;
-padding-right:25px;
+padding-left:30px;;
+
 }
 
 //
@@ -264,19 +266,14 @@ left:25%;
 right:25%;
 margin-bottom:30px;
 }
-
-.product-picture-top{
-
+.report-show-back{
+  background-color:rgb(180,71,0);
 }
-.product-wrapper{
-margin-left: 20px;
-padding: 20px 30px;
-}
+
+// product
 .product-wrapper a{
-margin-right: 40px;
-margin-left: 40px;
+padding-right: 40px;
 color:black;
-
 }
 
 .product-top h1{
@@ -298,4 +295,27 @@ color:black;
 .product-price{
   text-align: center;
   font-weight: bold;
+}
+// product-click
+#product-detail, .product-detail-mini{
+  display:none;
+
+}
+
+
+.card-header1 {
+	overflow: hidden;	/*拡大時にはみ出た部分を隠す*/
+	width: 100%;	/*画像の幅*/
+	height: 250px;	/*画像の高さ*/
+  margin-bottom: 0px;
+  position: relative;
+  z-index: 10;
+}
+.card-header1 a{
+	display: block;
+	transition-duration: 0.3s;	/*変化に掛かる時間*/
+}
+.card-header1 a:hover {
+	transform: scale(1.1);	/*画像の拡大率*/
+	transition-duration: 0.3s;	/*変化に掛かる時間*/
 }
